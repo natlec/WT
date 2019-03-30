@@ -7,27 +7,58 @@ import session
 
 app = Bottle()
 
-
+# Homepage / All products page
 @app.route('/')
 def index(db):
 
     info = {
-        'title': "The WT Store",
+        'page': '',
+        'title': 'All products',
+        'cart': 0
     }
+
+    info['products'] = model.product_list(db)
 
     return template('index', info)
 
 
+# Cart page
+@app.route('/cart')
+def cart(db):
 
+    info = {
+        'page': 'cart',
+        'title': 'Shopping cart',
+        'cart': 0
+    }
+
+    return template('cart', info)
+
+
+# Product page
+@app.route('/product/<id>')
+def product(db, id):
+
+    info = {
+        'page': 'product',
+        'title': 'Product page',
+        'cart': 0
+    }
+
+    return template('product', info)
+
+
+# Static files (CSS / Fonts / Images)
 @app.route('/static/<filename:path>')
 def static(filename):
     return static_file(filename=filename, root='static')
 
 
+# Start Bottle on port 8010
 if __name__ == '__main__':
 
     import bottle_sqlite as sqlite
     from dbschema import DATABASE_NAME
-    # install the database plugin
+    # Install database plugin
     app.install(sqlite.Plugin(dbfile=DATABASE_NAME))
     app.run(debug=True, port=8010)

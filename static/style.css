@@ -1,46 +1,311 @@
-html {
-    background-color: blue;
+/*** 
+	Copyright 2019, Nathan Lecompte 
+		ID: 45423725
+***/
+
+/* Global > Fonts > Muli
+    Source: https://fonts.google.com/specimen/Muli
+    License: OFL-1.1
+*/
+@font-face {
+    font-family: 'Muli';
+    src: local('Muli'), local('Muli-Regular'), url('muli.woff2') format('woff2'), url('muli.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+	font-display: swap;
+	unicode-range: U+000-5FF
+}
+@font-face {
+    font-family: 'Muli';
+    src: local('Muli Bold'), local('Muli-Bold'), url('muli-bold.woff2') format('woff2'), url('muli-bold.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+	font-display: swap;
+	unicode-range: U+000-5FF
 }
 
+/* Global > Fonts > Ilisarniq
+    Source: https://www.coppersandbrasses.com/retail-fonts/ilisarniq/
+    License: © 2019 Coppers and Brasses
+*/
+@font-face {
+    font-family: 'Ilisarniq';
+    src: local('Ilisarniq Bold'), local('Ilisarniq-Bold'), url('ilisarniq-bold.woff2') format('woff2'), url('ilisarniq-bold.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+	font-display: swap;
+	unicode-range: U+000-5FF
+}
+
+/* Global > CSS Variables */
+:root {
+    --bCol: 255, 255, 255; /* Background color */
+    --tCol: 0, 0, 0; /* Text color */
+    --opac: .7; /* Opacity */
+    --acc1: 10, 5, 25; /* Accent color 1 */
+    --acc2: 100, 50, 255; /* Accent color 2 */
+}
+
+/* Global > Page */
 body {
-    margin: 0;
+    margin: 0 20vw;
+    background: #fff; /* IE */
+    background: rgb(var(--bCol));
+    color: rgba(0, 0, 0, .7); /* IE */
+    color: rgba(var(--tCol), var(--opac));
+    line-height: 2;
+    font: 400 1em 'Muli', sans-serif;
+    scroll-behavior: smooth;
+    text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	image-rendering: optimizeQuality;
+    image-rendering: -webkit-optimize-contrast;
 }
 
-.content {
-    width: 80%;
-    margin: auto;
-    background-color: pink;
-}
-header h1 {
-    font-family: cursive, sans-serif;
-    text-align: center;
-    background-color: #ffcc33;
-    margin: 0;
-    padding: 10px;
+/* Global > Headings */
+h1, h2, h3, h4, h5, h6 {
+    margin: 1em 0;
+    color: rgb(10, 5, 25); /* IE */
+    color: rgb(var(--acc1));
+    font-family: 'Ilisarniq', sans-serif;
+    font-weight: 600;
 }
 
-nav {
-    width: 100%;
-    height: 50px;
-    margin: 0;
-    padding: 0;
-    background-color: aquamarine;
+/* Global > Links */
+a {
+    border-radius: 2px;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 4px;
+    color: rgb(10, 5, 25); /* IE */
+    color: rgb(var(--acc1));
+    white-space: nowrap;
+    transition: .1s ease;
+}
+a:active,
+a:focus {
+    outline: none;
+    color: rgb(100, 50, 255); /* IE */
+    color: rgb(var(--acc2));
+    background: rgba(100, 50, 255, .1); /* IE */
+    background: rgba(var(--acc2), .1);
 }
 
-nav ul {
-    float: left;
-    list-style: none;
-    text-align: center;
-    padding: 0;
-    margin: 0;
-}
-
-nav li {
+/* Global > Textboxes */
+input,
+input[type='text'],
+input[type='email'],
+input[type='password'],
+input[type='number'] {
     display: inline-block;
-    width: 100px;
-    padding: 15px 5px;
+    padding: 15px 20px;
+    height: 20px;
+    font: 400 1em 'Muli', sans-serif;
+    color: rgb(10, 5, 25); /* IE */
+    color: rgb(var(--acc1));
+    border: none;
+    background: rgb(255, 255, 255); /* IE */
+    background: rgb(var(--bCol));
+    box-shadow: inset 0 0 0 3px rgb(10, 5, 25); /* IE */
+    box-shadow: inset 0 0 0 3px rgb(var(--acc1));
+    outline: none;
+    transform: none;
+    transition: .2s ease;
+}
+input:hover,
+input[type='text']:hover,
+input[type='email']:hover,
+input[type='password']:hover,
+input[type='number']:hover,
+input:focus,
+input[type='text']:focus,
+input[type='email']:focus,
+input[type='password']:focus,
+input[type='number']:focus {
+    box-shadow: inset 0 0 0 3px rgb(100, 50, 255); /* IE */
+    box-shadow: inset 0 0 0 3px rgb(var(--acc2));
+}
+::-webkit-input-placeholder {
+    text-transform: capitalize;
+}
+:-moz-placeholder { 
+    text-transform: capitalize;
+}
+::-moz-placeholder {  
+    text-transform: capitalize;
+}
+:-ms-input-placeholder { 
+    text-transform: capitalize;
 }
 
-nav li:hover {
-    background-color: red;
+/* Global > Buttons */
+button,
+input[type='submit'] {
+    display: inline-block;
+    padding: 15px 20px;
+    height: 50px;
+    font: 600 1em 'Muli', sans-serif;
+    color: rgb(255, 255, 255); /* IE */
+    color: rgb(var(--bCol));
+    border: none;
+    background: rgb(10, 5, 25); /* IE */
+    background: rgb(var(--acc1));
+    box-shadow: none;
+    cursor: pointer;
+    outline: none;
+    transform: scale(1);
+    transition: .2s ease;
+}
+button:hover,
+input[type='submit']:hover,
+button:focus,
+input[type='submit']:focus {
+    background: rgb(100, 50, 255); /* IE */
+    background: rgb(var(--acc2));
+    box-shadow: inset 0 0 0 3px rgba(10, 5, 25, .1); /* IE */
+    box-shadow: inset 0 0 0 3px rgba(var(--acc1), .1);
+}
+button:active,
+input[type='submit']:active {
+    color: rgba(255, 255, 255, .7); /* IE */
+    color: rgba(var(--bCol), var(--opac));
+    background: rgb(100, 50, 255); /* IE */
+    background: rgb(var(--acc2));
+    box-shadow: inset 0 0 0 3px rgba(10, 5, 25, .1); /* IE */
+    box-shadow: inset 0 0 0 3px rgba(var(--acc1), .1);
+    transform: scale(.95);
+    transition: .1s ease;
+}
+
+
+/* Header */
+header {
+    display: flex;
+    position: fixed;
+    height: 60px;
+    padding: 10px 20vw;
+    top: 0;
+    left: 0;
+    right: 0;
+    align-items: center;
+    background: rgb(10, 5, 25); /* IE */
+    background: rgb(var(--acc1));
+    box-shadow: 0 2px 5px rgba(10, 5, 25, .2); /* IE */
+    box-shadow: 0 2px 5px rgba(var(--acc1), .2);
+    z-index: 99;
+}
+
+/* Header > Links */
+header a {
+    display: flex;
+    height: 20px;
+    padding: 20px;
+    color: rgb(255, 255, 255);
+    color: rgb(var(--bCol));
+}
+header a:active,
+header a:focus {
+    color: rgb(255, 255, 255); /* IE */
+    color: rgb(var(--bCol));
+    background: rgba(255, 255, 255, .1); /* IE */
+    background: rgba(var(--bCol), .1);
+}
+
+/* Header > Home button */
+header .home {
+    margin-left: -20px;
+}
+header .home h1 {
+    display: block;
+    position: relative;
+    margin: -6px 0 0;
+    white-space: nowrap;
+    color: rgb(255, 255, 255); /* IE */
+    color: rgb(var(--bCol));
+    font: 600 1.5em 'Ilisarniq', sans-serif;
+    text-transform: uppercase;
+    z-index: 999;
+}
+header .back h1 {
+    margin-left: 20px;
+}
+
+/* Header > Back button indicator */
+header .back h1::before,
+header .back h1::after {
+    content: '|';
+    display: block;
+    position: absolute;
+    color: rgb(255, 255, 255); /* IE */
+    color: rgb(var(--bCol));
+    font: 400 25px 'Muli', sans-serif;
+    overflow: hidden;
+    width: 20px;
+    height: 18px;
+    left: -20px;
+    transition: .3s ease;
+    z-index: 99;
+}
+header .back h1::before {
+    transform: rotate(45deg);
+    margin: 6px 0 0;
+}
+header .back h1::after {
+    transform: rotate(-45deg);
+    margin: -26px 0 0 -5px;
+}
+header .back:hover h1::before,
+header .back:hover h1::after {
+    color: rgb(100, 50, 255); /* IE */
+    color: rgb(var(--acc2));
+}
+
+/* Header > Cart button */
+header .cart {
+    margin: 0 -20px 0 auto;
+}
+
+
+/* Main */
+main {
+    margin: 120px 0 40px;
+}
+.products {
+    display: flex;
+    flex-wrap: wrap;
+}
+.product {
+    display: flex;
+    flex-direction: column; 
+}
+
+
+/* Footer */
+footer {
+    margin: 40px 0 0;
+    padding: 20px;
+    font-size: .85em;
+    text-align: center;
+    border-top: 1px solid rgba(10, 5, 25, .05);
+    border-top: 1px solid rgba(var(--acc1), .05);
+}
+
+
+/* Responsive */
+@media (max-width: 1200px) {
+    body {
+        margin: 0 10vw;
+    }
+    header {
+        padding: 10px 10vw;
+    }
+}
+@media (max-width: 800px) {
+    body {
+        margin: 0 20px;
+    }
+    header {
+        padding: 10px 30px;
+    }
 }

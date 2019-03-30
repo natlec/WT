@@ -1,5 +1,12 @@
 % rebase('base.html')
 
-<h1>{{title}}</h1>
+<h2>{{title}}</h2>
 
-<p>Your content goes here...</p>
+<div class="products">
+    % for product in products:
+        <a class="product" href="/product/{{product[0]}}">
+            <h3>{{product[1]}}</h3>
+            <h4>{{product[5]}}</h4>
+        </a>
+    % end
+</div>

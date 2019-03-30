@@ -6,25 +6,19 @@
     <link rel="stylesheet" href="/static/style.css" type="text/css">
 </head>
 <body>
-
     <header>
-        <h1>The WT</h1>
-        <nav>
-            <ul class="menu">
-                <li><a href="/">Home</a></li>
-            </ul>
-            <ul class="account-menu">
-                <li><a href="/cart">View Cart</a></li>
-            </ul>
-        </nav>
+        % if page == '':
+            <a href="/" class="home" title="Go home"><h1>The WT</h1></a>
+        % else:
+            <a href="/" class="home back" title="Go home"><h1>The WT</h1></a>
+        % end
+        <a href="/cart" class="cart" title="View cart">View cart ({{cart}})</a>
     </header>
-
-    <div class="content">
+    <main>
         {{!base}}
-    </div>
-
+    </main>
     <footer>
-        <p>Copyright &copy; 2019 COMP249 Web Technology</p>
+        <p>Copyright &copy; 2019 Nathan Lecompte</p>
     </footer>
 </body>
 </html>
