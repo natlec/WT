@@ -1,11 +1,13 @@
-COMP249 Web Technology 2019: Web Development Assignment
-===
+<br>
+<p align="center">
+    <img alt="The WT" src="/assets/images/logo.png" width="150px">
+</p>
+<br>
+<p align="center">
+  An online store web-application written in Python.
+</p>
+<br>
 
-
-This year's web application project is an online store.  In this assignment you will
-write the code to display products and support a shopping cart on the store.  You are
-provided with a basic outline implementation of a web application. You must extend this to meet
-the requirements below.
 
 dbschema.py
 -----------
@@ -179,19 +181,3 @@ run each test file individually in PyCharm (right click on the test file and sel
 
 `test_views.py` provides functional tests of the app by making requests to the URLs defined
 above and checking the responses. 
-
-Grading
-========
-
-This assignment is worth 10% of the final marks for COMP249.  The marks will be assigned as follows:
-
- * Passing all automated tests: 8%
- * Manual assessment of code quality and documentation: 2% 
- 
-Code quality means well laid out code, good use of variable names, functions and use of appropriate 
- control flow and data structures. 
- 
-Documentation means that all functions that you write have suitable docstrings and where appropriate you 
- use comments in your code to explain yourself. 
- 
- 
