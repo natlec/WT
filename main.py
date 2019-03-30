@@ -26,7 +26,7 @@ def static(filename):
 
 if __name__ == '__main__':
 
-    from bottle.ext import sqlite
+    import bottle_sqlite as sqlite
     from dbschema import DATABASE_NAME
     # install the database plugin
     app.install(sqlite.Plugin(dbfile=DATABASE_NAME))
