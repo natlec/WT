@@ -24,11 +24,17 @@
                 <div class="stock nostock">Out of stock</div>
                 % end
             </div>
+            % if product['inventory'] == 0:
+            <form method="POST" action="/cart">
+                <input type="hidden" name="product" value="{{product['id']}}">
+            </form>
+            % else:
             <form method="POST" action="/cart">
                 <input type="number" name="quantity" value="1" min="1" max="{{product['inventory']}}" required>
                 <input type="hidden" name="product" value="{{product['id']}}" required>
                 <input type="submit" value="Add to Cart" title="Add to cart">
             </form>
+            % end
         </div>
     </div>
 </div>
