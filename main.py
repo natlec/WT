@@ -29,7 +29,7 @@ def cart(db):
     info = {
         'page': 'cart',
         'title': 'Shopping cart',
-        'cart': 0
+        'cart': 20
     }
 
     return template('cart', info)
@@ -41,7 +41,7 @@ def product(db, id):
 
     info = {
         'page': 'product',
-        'cart': 0
+        'cart': 5
     }
 
     info['product'] = model.product_get(db, id)

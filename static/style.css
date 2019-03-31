@@ -249,7 +249,7 @@ header .back h1::after {
     width: 20px;
     height: 18px;
     left: -20px;
-    transition: .3s ease;
+    transition: .2s ease;
     z-index: 99;
 }
 header .back h1::before {
@@ -268,7 +268,37 @@ header .back:hover h1::after {
 
 /* Header > Cart button */
 header .cart {
+    display: flex;
+    align-items: center;
     margin: 0 -20px 0 auto;
+}
+header .cart .icon {
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    margin: 0 10px 0 0;
+    overflow: hidden;
+}
+header .cart .icon svg {
+    position: absolute;
+    fill: rgb(255, 255, 255); /* IE */
+    fill: rgb(var(--bCol));
+    transition: .2s ease;
+}
+header .cart:hover .icon svg,
+header .cart:hover .icon svg {
+    fill: rgb(100, 50, 255); /* IE */
+    fill: rgb(var(--acc2));
+}
+header .cart .icon span {
+    position: absolute;
+    margin: -4px 0 0;
+    font: 600 .7em 'Ilisarniq', sans-serif;
+    color: rgb(10, 5, 25); /* IE */
+    color: rgb(var(--acc1));
 }
 
 
