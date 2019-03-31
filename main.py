@@ -41,9 +41,10 @@ def product(db, id):
 
     info = {
         'page': 'product',
-        'title': 'Product page',
         'cart': 0
     }
+
+    info['product'] = model.product_get(db, id)
 
     return template('product', info)
 
