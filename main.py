@@ -12,7 +12,7 @@ app = Bottle()
 @app.route('/')
 def index(db):
 
-    # Get or set session
+    # Get or set session cookie
     session.get_or_create_session(db)
 
     # Info relative to page
@@ -33,7 +33,7 @@ def index(db):
 @app.route('/<category>')
 def products(db, category):
 
-    # Get or set session
+    # Get or set session cookie
     session.get_or_create_session(db)
 
     # Check if category exists
@@ -59,14 +59,11 @@ def products(db, category):
 @app.route('/cart')
 def cart(db):
 
-    # Get or set session
-    session.get_or_create_session(db)
-
     # Info relative to page
     info = {
         'page': 'cart',
         'title': 'Shopping cart',
-        'cart': 20
+        'cart': 0
     }
 
     return template('cart', info)
@@ -76,14 +73,11 @@ def cart(db):
 @app.post('/cart')
 def addToCart(db):
 
-    # Get or set session
-    session.get_or_create_session(db)
-
     # Info relative to page
     info = {
         'page': 'cart',
         'title': 'Shopping cart',
-        'cart': 25
+        'cart': 0
     }
     
     return template('cart', info)
@@ -93,13 +87,10 @@ def addToCart(db):
 @app.route('/product/<id>')
 def product(db, id):
 
-    # Get or set session
-    session.get_or_create_session(db)
-
     # Info relative to page
     info = {
         'page': 'product',
-        'cart': 5
+        'cart': 0
     }
 
     # Get product data

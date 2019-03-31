@@ -5,6 +5,7 @@ Code for handling sessions in our web application
 from bottle import request, response
 import uuid
 import json
+import datetime
 
 import model
 import dbschema
@@ -21,6 +22,38 @@ def get_or_create_session(db):
 
     Returns the session key (string)
     """
+
+    # Create session table
+    cur = db.cursor()
+    cur.execute("DROP TABLE IF EXISTS session")
+    cur.execute("""
+    CREATE TABLE session (
+        key text unique primary key
+    )
+    """)
+
+    # Get session key from cookie
+    key = request.get_cookie(COOKIE_NAME)
+    cur.execute("SELECT key FROM session WHERE key=?", (key,))
+    row = cur.fetchone()
+
+    # If no existing session: create new session instead
+    if not row:
+        # Use uuid library to generate random key
+        key = str(uuid.uuid4())
+
+        # Store new session key in database
+        cur.execute("INSERT INTO session VALUES (?)", (key,))
+        db.commit()
+
+        # Set cookie expiry time
+        expiry = datetime.datetime.now() + datetime.timedelta(days=1)
+
+        # Set cookie
+        response.set_cookie(COOKIE_NAME, key, path="/", expires=expiry)
+
+    # Return session key
+    return key
 
 
 def add_to_cart(db, itemid, quantity):
