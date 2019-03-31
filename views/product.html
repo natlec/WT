@@ -1,9 +1,12 @@
 % rebase('base.html')
 
+<!-- Product {{product['id']}} -->
 <div class="product">
+    <!-- Product image -->
     <div class="image">
         <img src="{{product['image_url']}}" alt="{{product['name']}}">
     </div>
+    <!-- Product info -->
     <div class="info">
         <div class="category">{{product['category']}}'s</div>
         <h2 class="name">{{product['name']}}</h2>
@@ -14,19 +17,19 @@
             <div class="units">
                 <div class="price">${{product['unit_cost']}}</div>
                 % if product['inventory'] > 10:
-                    <div class="stock">{{product['inventory']}} in stock</div>
-                % elif 1 <= product['inventory'] <= 10:
-                    <div class="stock lowstock">Only {{product['inventory']}} left in stock!</div>
+                <div class="stock">{{product['inventory']}} in stock</div>
+                % elif (1 <= product['inventory'] <= 10):
+                <div class="stock lowstock">Only {{product['inventory']}} left in stock!</div>
                 % else:
-                    <div class="stock nostock">Out of stock</div>
+                <div class="stock nostock">Out of stock</div>
                 % end
             </div>
             % if product['inventory'] > 0:
-                <form action="/cart" method='POST'>
-                    <input name="quantity" type="number" value="1" min="1" max="{{product['inventory']}}">
-                    <input name="item" type="hidden" value="{{product['id']}}}">
-                    <input type="submit" value="Add to Cart">
-                </form>
+            <form method="POST" action="/cart">
+                <input type="number" name="quantity" value="1" min="1" max="{{product['inventory']}}" required>
+                <input type="hidden" name="product" value="{{product['id']}}" required>
+                <input type="submit" value="Add to Cart" title="Add to cart">
+            </form>
             % end
         </div>
     </div>

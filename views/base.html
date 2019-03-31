@@ -7,30 +7,44 @@
 </head>
 <body>
     <header>
+        <!-- Home button -->
         % if page == '':
-            <a href="/" class="home" title="Go home"><h1>The WT</h1></a>
+        <a href="/" class="home" title="Go home"><h1>The WT</h1></a>
         % else:
-            <a href="/" class="home back" title="Go home"><h1>The WT</h1></a>
+        <a href="/" class="home back" title="Go home"><h1>The WT</h1></a>
         % end
-        <a href="/cart" class="cart" title="View cart">
-            <div class="icon">
-                <svg viewBox="0 0 32 32" width="28" height="28" xmlns="http://www.w3.org/2000/svg">
-                    <path d="m0 4h5l1 4h24l-2 14h-22l-2.5-16h-3.5zm10 20a3 3 0 0 0 0 6 3 3 0 0 0 0-6m14 0a3 3 0 0 0 0 6 3 3 0 0 0 0-6"/>
-                </svg>
-                % if cart > 0:
+        <!-- Menu button (mobile) -->
+        <button class="menu">
+            <svg viewBox="0 0 24 24" width="28" height="28" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="2"/><circle cx="12" cy="5" r="2"/><circle cx="12" cy="19" r="2"/></svg>
+        </button>
+        <!-- Menu -->
+        <nav>
+            <a href="/men" class="cart" title="View men's products">Men</a>
+            <a href="/women" class="cart" title="View women's products">Women</a>
+            <hr>
+            <!-- Cart button-->
+            <a href="/cart" class="cart" title="View cart">
+                <div class="icon">
+                    <svg viewBox="0 0 32 32" width="28" height="28" xmlns="http://www.w3.org/2000/svg">
+                        <path d="m0 4h5l1 4h24l-2 14h-22l-2.5-16h-3.5zm10 20a3 3 0 0 0 0 6 3 3 0 0 0 0-6m14 0a3 3 0 0 0 0 6 3 3 0 0 0 0-6"/>
+                    </svg>
+                    % if cart > 0:
                     <span>{{cart}}</span>
-                % elif cart > 999:
+                    % elif cart > 999:
                     <span>$</span>
-                % end
-            </div>
-            View cart
-        </a>
+                    % end
+                </div>
+                View cart
+            </a>
+        </nav>
     </header>
     <main>
-        {{!base}}
+    {{!base}}
     </main>
+    <hr>
     <footer>
         <p>Copyright &copy; 2019 Nathan Lecompte</p>
     </footer>
+    <script src="/static/main.js" async></script>
 </body>
 </html>

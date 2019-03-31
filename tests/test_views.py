@@ -1,7 +1,7 @@
 import unittest
 import sqlite3
 import os
-from bottle.ext import sqlite
+import bottle_sqlite as sqlite
 import bottle
 import html
 from webtest import TestApp

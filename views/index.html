@@ -1,9 +1,12 @@
 % rebase('base.html')
 
-<h2>{{title}}</h2>
-
-<div class="products">
-    % for product in products:
+    <h2>{{title}}</h2>
+    <p>{{description}}</p>
+    <hr>
+    <!-- Products list -->
+    <div class="products">
+        % for product in products:
+        <!-- Product {{product['id']}} -->
         <a class="product-item" href="/product/{{product['id']}}">
             <div class="image">
                 <img src="{{product['image_url']}}" alt="{{product['name']}}">
@@ -12,11 +15,11 @@
             <div class="info">
                 <h4>${{product['unit_cost']}}</h4>
                 % if product['inventory'] > 0:
-                    <h5>{{product['inventory']}} in stock</h5>
+                <h5>{{product['inventory']}} in stock</h5>
                 % else:
-                    <h5 class="nostock">Out of stock</h5>
+                <h5 class="nostock">Out of stock</h5>
                 % end
             </div>
         </a>
-    % end
-</div>
+        % end
+    </div>
