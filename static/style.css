@@ -214,6 +214,7 @@ header {
 header a,
 header button {
     display: flex;
+    align-items: center;
     height: 20px;
     padding: 20px;
     background: none;
@@ -238,6 +239,7 @@ header button:focus {
 
 /* Header > Home button */
 header .home {
+    height: 60px;
     margin-left: -20px;
 }
 header .home h1 {
@@ -267,17 +269,17 @@ header .back h1::after {
     overflow: hidden;
     width: 20px;
     height: 18px;
-    left: -20px;
+    left: -25px;
     transition: .2s ease;
     z-index: 99;
 }
 header .back h1::before {
     transform: rotate(45deg);
-    margin: 6px 0 0;
+    margin: 2px 0 0;
 }
 header .back h1::after {
     transform: rotate(-45deg);
-    margin: -26px 0 0 -5px;
+    margin: -21px 0 0 -5px;
 }
 header .back:hover h1::before,
 header .back:hover h1::after {
@@ -296,8 +298,8 @@ header nav hr {
     margin: 0 10px;
     width: 2px;
     height: 30px;
-    background: rgba(255, 255, 255, .1); /* IE */
-    background: rgba(var(--bCol), .1);
+    background: rgba(255, 255, 255, .08); /* IE */
+    background: rgba(var(--bCol), .08);
 }
 
 /* Header > Menu button */
@@ -306,6 +308,9 @@ header .menu {
     align-items: center;
     margin: 0 -20px 0 auto;
     height: 60px;
+}
+header .menu svg {
+    margin: -2px 0 0;
     fill: rgb(255, 255, 255); /* IE */
     fill: rgb(var(--bCol));
 }
@@ -426,6 +431,8 @@ main h2 {
     order: 1;
     overflow: hidden;
     border-radius: 2px;
+    background: rgba(10, 5, 25, .1); /* IE */
+    background: rgba(var(--acc1), .1);
 }
 .product .image img {
     width: 100%;
@@ -553,21 +560,25 @@ footer {
     }
     /* Header > Menu */
     header nav {
-        display: none;
+        display: block;
         position: fixed;
         flex-direction: column;
         align-items: flex-end;
-        padding: 10px 30px 30px;
-        top: 80px;
+        padding: 0 20px 0;
+        top: 50px;
         left: 0;
         right: 20px;
         background: rgb(10, 5, 25); /* IE */
         background: rgb(var(--acc1));
         box-shadow: 0 2px 5px rgba(10, 5, 25, .2); /* IE */
         box-shadow: 0 2px 5px rgba(var(--acc1), .2);
+        overflow: hidden;
+        height: 0;
+        z-index: -1;
+        transition: .4s cubic-bezier(.17,.67,.16,.99);
     }
     header nav hr {
-        margin: 20px;
+        margin: 15px 20px;
         width: auto;
         height: 2px;
     }
@@ -584,6 +595,9 @@ footer {
         margin-top: 110px;
     }
     /* Main > Products > Product item */
+    .product-item .image {
+        min-width: 50vw;
+    }
     .product-item h3 {
         max-width: 60vw;
     }

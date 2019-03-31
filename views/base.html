@@ -2,25 +2,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
     <title>THE WT</title>
     <link rel="stylesheet" href="/static/style.css" type="text/css">
 </head>
 <body>
     <header>
-        <!-- Home button -->
-        % if page == '':
-        <a href="/" class="home" title="Go home"><h1>The WT</h1></a>
-        % else:
-        <a href="/" class="home back" title="Go home"><h1>The WT</h1></a>
-        % end
+        <!-- Home button / Back button -->
+        <button class="home" title="Go back"><h1>The WT</h1></button>
         <!-- Menu button (mobile) -->
         <button class="menu">
-            <svg viewBox="0 0 24 24" width="28" height="28" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="2"/><circle cx="12" cy="5" r="2"/><circle cx="12" cy="19" r="2"/></svg>
+            <svg height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="m4 5h16a1 1 0 0 1 0 2h-16a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2h-16a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2h-16a1 1 0 0 1 0-2z"/></svg>
         </button>
         <!-- Menu -->
         <nav>
-            <a href="/men" class="cart" title="View men's products">Men</a>
-            <a href="/women" class="cart" title="View women's products">Women</a>
+            <a href="/" title="View all products">All</a>
+            <a href="/men" title="View men's products">Men</a>
+            <a href="/women" title="View women's products">Women</a>
             <hr>
             <!-- Cart button-->
             <a href="/cart" class="cart" title="View cart">
@@ -45,6 +43,6 @@
     <footer>
         <p>Copyright &copy; 2019 Nathan Lecompte</p>
     </footer>
-    <script src="/static/main.js" async></script>
+    <script src="/static/main.js"></script>
 </body>
 </html>
