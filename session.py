@@ -25,35 +25,28 @@ def get_or_create_session(db):
 
     # Create session table
     cur = db.cursor()
-    cur.execute("DROP TABLE IF EXISTS session")
-    cur.execute("""
-    CREATE TABLE session (
-        key text unique primary key
-    )
-    """)
 
-    # Get session key from cookie
-    key = request.get_cookie(COOKIE_NAME)
-    cur.execute("SELECT key FROM session WHERE key=?", (key,))
-    row = cur.fetchone()
+    # Get sessionid from cookie
+    sessionid = request.get_cookie(COOKIE_NAME)
+    cur.execute("SELECT sessionid FROM sessions WHERE sessionid=?", (sessionid,))
 
-    # If no existing session: create new session instead
-    if not row:
-        # Use uuid library to generate random key
-        key = str(uuid.uuid4())
+    # If no existing session: create new session
+    if not cur.fetchone():
+        # Use uuid library to generate random sessionid
+        sessionid = str(uuid.uuid4())
 
-        # Store new session key in database
-        cur.execute("INSERT INTO session VALUES (?)", (key,))
+        # Store new sessionid in database
+        cur.execute("INSERT INTO sessions VALUES (?, '')", (sessionid,))
         db.commit()
 
-        # Set cookie expiry time
-        expiry = datetime.datetime.now() + datetime.timedelta(days=1)
+        # Set cookie expiry time to 1 week
+        expiry = datetime.datetime.now() + datetime.timedelta(days=7)
 
         # Set cookie
-        response.set_cookie(COOKIE_NAME, key, path="/", expires=expiry)
+        response.set_cookie(COOKIE_NAME, sessionid, path="/", expires=expiry)
 
-    # Return session key
-    return key
+    # Return sessionid
+    return sessionid
 
 
 def add_to_cart(db, itemid, quantity):
