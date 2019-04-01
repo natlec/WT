@@ -5,7 +5,7 @@
 
 window.onload = function() {
     // Enable back button if needed
-    if(document.referrer.indexOf('127.0.0.1:8010') > -1 && history.length > 1) {
+    if(document.referrer.indexOf('127.0.0.1:8010') > -1 && history.length > 0) {
         document.getElementsByClassName('home')[0].classList.add('back');
     } else {
         document.getElementsByClassName('home')[0].classList.remove('back');
@@ -14,7 +14,7 @@ window.onload = function() {
 
 // Handle back button click
 document.getElementsByClassName('home')[0].onclick = function() {
-    if(document.referrer.indexOf('127.0.0.1:8010') > -1 && history.length > 1) {
+    if(document.referrer.indexOf('127.0.0.1:8010') > -1 && history.length > 0) {
         window.history.back();
     }
 };
