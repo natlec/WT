@@ -59,6 +59,9 @@ def products(db, category):
 @app.route('/cart')
 def cart(db):
 
+    # Get or set session cookie
+    session.get_or_create_session(db)
+
     # Info relative to page
     info = {
         'page': 'cart',
@@ -73,6 +76,9 @@ def cart(db):
 @app.post('/cart')
 def addToCart(db):
 
+    # Get or set session cookie
+    session.get_or_create_session(db)
+
     # Info relative to page
     info = {
         'page': 'cart',
@@ -86,6 +92,9 @@ def addToCart(db):
 # Product page
 @app.route('/product/<id>')
 def product(db, id):
+
+    # Get or set session cookie
+    session.get_or_create_session(db)
 
     # Info relative to page
     info = {
