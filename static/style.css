@@ -397,6 +397,11 @@ main h2 {
     transform: none;
     transition: .2s ease;
 }
+.product-item:active,
+.product-item:focus {
+    background: rgba(10, 5, 25, .1); /* IE */
+    background: rgba(var(--acc1), .1);
+}
 .product-item:active {
     transform: scale(.98);
 }
@@ -541,6 +546,11 @@ main h2 {
     align-items: center;
     transform: none;
     transition: .2s ease;
+}
+.cart-item:active,
+.cart-item:focus {
+    background: rgba(10, 5, 25, .1); /* IE */
+    background: rgba(var(--acc1), .1);
 }
 .cart-item:active {
     transform: scale(.98);
