@@ -15,7 +15,7 @@
         </div>
         <div class="buy">
             <div class="units">
-                <div class="price">${{product['unit_cost']}}</div>
+                <div class="cost">${{product['unit_cost']}}</div>
                 % if product['inventory'] > 10:
                 <div class="stock">{{product['inventory']}} in stock</div>
                 % elif (1 <= product['inventory'] <= 10):

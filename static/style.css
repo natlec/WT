@@ -477,7 +477,7 @@ main h2 {
     flex-direction: column;
     margin-right: 40px;
 }
-.product .price {
+.product .cost {
     margin: 20px 0 0 0;
     font: 600 1.4em 'Ilisarniq', sans-serif;
     color: rgb(10, 5, 25); /* IE */
@@ -688,5 +688,10 @@ footer {
     }
     .product form {
         margin: 20px 0 0 0;
+    }
+    /* Main > Cart */
+    .cart-item .name,
+    .cart-item .cost {
+        font-size: 1em;
     }
 }
