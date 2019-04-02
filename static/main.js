@@ -29,7 +29,7 @@ document.getElementsByClassName('menu-button')[0].onclick = function() {
 };
 
 // Handle menu hide for unfocus tap on mobile
-document.getElementsByTagName('main-button')[0].onclick = function() {
+document.getElementsByTagName('main')[0].onclick = function() {
     if(window.innerWidth<800) {
         let menu = document.getElementsByTagName('nav')[0];
         menu.style.height = 0;
