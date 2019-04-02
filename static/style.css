@@ -269,55 +269,19 @@ header .active-button::after {
 
 /* Header > Home button */
 .home-button {
-    height: 60px;
     margin-left: -20px;
 }
-.home-button h1 {
+.home-button svg {
     display: block;
     position: relative;
-    margin: -6px 0 0;
     white-space: nowrap;
-    color: rgb(255, 255, 255); /* IE */
-    color: rgb(var(--bCol));
-    font: 600 1.5em 'Ilisarniq', sans-serif;
-    text-transform: uppercase;
+    fill: rgb(255, 255, 255); /* IE */
+    fill: rgb(var(--bCol));
     z-index: 999;
 }
-.back-button h1 {
+.back-button svg {
     margin-left: 20px;
 }
-
-/* Header > Back button indicator */
-.back-button h1::before,
-.back-button h1::after {
-    content: '|';
-    display: block;
-    position: absolute;
-    color: rgb(255, 255, 255); /* IE */
-    color: rgb(var(--bCol));
-    font: 400 25px 'Muli', sans-serif;
-    overflow: hidden;
-    width: 20px;
-    height: 18px;
-    left: -25px;
-    transition: .2s ease;
-    z-index: 99;
-}
-.back-button h1::before {
-    transform: rotate(45deg);
-    margin: 2px 0 0;
-}
-.back-button h1::after {
-    transform: rotate(-45deg);
-    margin: -21px 0 0 -5px;
-}
-.back-button:hover h1::before,
-.back-button:hover h1::after {
-    color: rgb(100, 50, 255); /* IE */
-    color: rgb(var(--acc2));
-}
-
-
 
 /* Header > Menu button */
 .menu-button {

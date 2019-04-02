@@ -3,22 +3,6 @@
 		ID: 45423725
 ***/
 
-window.onload = function() {
-    // Enable back button if needed
-    if(document.referrer.indexOf('127.0.0.1:8010') > -1 && history.length > 0) {
-        document.getElementsByClassName('home-button')[0].classList.add('back-button');
-    } else {
-        document.getElementsByClassName('home-button')[0].classList.remove('back-button');
-    }
-}
-
-// Handle back button click
-document.getElementsByClassName('home-button')[0].onclick = function() {
-    if(document.referrer.indexOf('127.0.0.1:8010') > -1 && history.length > 0) {
-        window.history.back();
-    }
-};
-
 // Handle menu button click on mobile
 document.getElementsByClassName('menu-button')[0].onclick = function() {
     if(window.innerWidth<800) {
