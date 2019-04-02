@@ -96,7 +96,7 @@ a:focus {
 hr {
     margin: 40px 0;
     border: none;
-    height: 1px;
+    height: 2px;
     background: rgba(10, 5, 25, .05); /* IE */
     background: rgba(var(--acc1), .05);
 }
@@ -210,10 +210,24 @@ header {
     z-index: 99;
 }
 
-/* Header > Links */
+/* Header > Menu */
+header nav {
+    display: flex;
+    align-items: center;
+    margin: 0 -20px 0 auto;
+}
+header nav hr {
+    display: block;
+    margin: 0 10px;
+    width: 2px;
+    height: 30px;
+    background: rgba(255, 255, 255, .08); /* IE */
+    background: rgba(var(--bCol), .08);
+}
 header a,
 header button {
     display: flex;
+    position: relative;
     align-items: center;
     height: 20px;
     padding: 20px;
@@ -236,13 +250,24 @@ header button:focus {
     background: rgba(255, 255, 255, .1); /* IE */
     background: rgba(var(--bCol), .1);
 }
+header .active-button::after {
+    content: '';
+    display: block;
+    position: absolute;
+    height: 2px;
+    width: 100%;
+    left: 0;
+    top: -10px;
+    background: rgba(100, 50, 255, .7); /* IE */
+    background: rgba(var(--acc2), var(--opac));
+}
 
 /* Header > Home button */
-header .home-button {
+.home-button {
     height: 60px;
     margin-left: -20px;
 }
-header .home-button h1 {
+.home-button h1 {
     display: block;
     position: relative;
     margin: -6px 0 0;
@@ -253,13 +278,13 @@ header .home-button h1 {
     text-transform: uppercase;
     z-index: 999;
 }
-header .back-button h1 {
+.back-button h1 {
     margin-left: 20px;
 }
 
 /* Header > Back button indicator */
-header .back-button h1::before,
-header .back-button h1::after {
+.back-button h1::before,
+.back-button h1::after {
     content: '|';
     display: block;
     position: absolute;
@@ -273,54 +298,47 @@ header .back-button h1::after {
     transition: .2s ease;
     z-index: 99;
 }
-header .back-button h1::before {
+.back-button h1::before {
     transform: rotate(45deg);
     margin: 2px 0 0;
 }
-header .back-button h1::after {
+.back-button h1::after {
     transform: rotate(-45deg);
     margin: -21px 0 0 -5px;
 }
-header .back-button:hover h1::before,
-header .back-button:hover h1::after {
+.back-button:hover h1::before,
+.back-button:hover h1::after {
     color: rgb(100, 50, 255); /* IE */
     color: rgb(var(--acc2));
 }
 
-/* Header > Menu */
-header nav {
-    display: flex;
-    align-items: center;
-    margin: 0 -20px 0 auto;
-}
-header nav hr {
-    display: block;
-    margin: 0 10px;
-    width: 2px;
-    height: 30px;
-    background: rgba(255, 255, 255, .08); /* IE */
-    background: rgba(var(--bCol), .08);
-}
+
 
 /* Header > Menu button */
-header .menu-button {
+.menu-button {
     display: none;
     align-items: center;
     margin: 0 -20px 0 auto;
     height: 60px;
 }
-header .menu-button svg {
+.menu-button svg {
     margin: -2px 0 0;
     fill: rgb(255, 255, 255); /* IE */
     fill: rgb(var(--bCol));
+    transition: .2s ease;
+}
+.menu-button:hover svg,
+.menu-button:hover svg {
+    fill: rgb(100, 50, 255); /* IE */
+    fill: rgb(var(--acc2));
 }
 
 /* Header > Menu > Cart button */
-header .cart-button {
+.cart-button {
     display: flex;
     align-items: center;
 }
-header .cart-button .icon {
+.cart-button .icon {
     display: flex;
     position: relative;
     align-items: center;
@@ -330,18 +348,18 @@ header .cart-button .icon {
     margin: 0 10px 0 0;
     overflow: hidden;
 }
-header .cart-button .icon svg {
+.cart-button .icon svg {
     position: absolute;
     fill: rgb(255, 255, 255); /* IE */
     fill: rgb(var(--bCol));
     transition: .2s ease;
 }
-header .cart-button:hover .icon svg,
-header .cart-button:hover .icon svg {
+.cart-button:hover .icon svg,
+.cart-button:hover .icon svg {
     fill: rgb(100, 50, 255); /* IE */
     fill: rgb(var(--acc2));
 }
-header .cart-button .icon span {
+.cart-button .icon span {
     position: absolute;
     margin: -4px 0 0;
     font: 600 .7em 'Ilisarniq', sans-serif;
@@ -665,8 +683,19 @@ footer {
     header nav a {
         display: block;
     }
+    header .active-button::after {
+        content: '';
+        display: block;
+        position: absolute;
+        height: 100%;
+        width: 2px;
+        left: -20px;
+        top: 0;
+        background: rgba(100, 50, 255, .7); /* IE */
+        background: rgba(var(--acc2), var(--opac));
+    }
     /* Header > Menu button */
-    header .menu-button {
+    .menu-button {
         display: flex;
     }
 

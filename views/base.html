@@ -16,12 +16,28 @@
         </button>
         <!-- Menu -->
         <nav>
+            % if page == '':
+            <a href="/" class="active-button" title="View all products">All</a>
+            % else:
             <a href="/" title="View all products">All</a>
+            % end
+            % if page == 'men':
+            <a href="/men" class="active-button" title="View men's products">Men</a>
+            % else:
             <a href="/men" title="View men's products">Men</a>
+            % end
+            % if page == 'women':
+            <a href="/women" class="active-button" title="View women's products">Women</a>
+            % else:
             <a href="/women" title="View women's products">Women</a>
+            % end
             <hr>
             <!-- Cart button-->
+            % if page == 'cart':
+            <a href="/cart" class="cart-button active-button" title="View cart">
+            % else:
             <a href="/cart" class="cart-button" title="View cart">
+            % end
                 <div class="icon">
                     <svg viewBox="0 0 32 32" width="28" height="28" xmlns="http://www.w3.org/2000/svg">
                         <path d="m0 4h5l1 4h24l-2 14h-22l-2.5-16h-3.5zm10 20a3 3 0 0 0 0 6 3 3 0 0 0 0-6m14 0a3 3 0 0 0 0 6 3 3 0 0 0 0-6"/>
