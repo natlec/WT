@@ -69,12 +69,15 @@ def add_to_cart(db, itemid, quantity):
     # Create new item to add
     item = {'id': itemid, 'quantity': int(quantity), 'name': product['name'], 'cost': float(product['unit_cost']), 'image': product['image_url']}
 
-    # Check if item exists & ensure quantity does not exceed stock
+    # Check if item exists
     exists = False
     for i in cart:
-        if i['id'] == itemid and (int(quantity)+i['quantity']) < i['quantity']:
-            # Update existing item quantity
-            i['quantity'] += int(quantity)
+        if i['id'] == itemid:
+            # Update existing item & ensure quantity does not exceed stock
+            if (int(quantity) + i['quantity']) > product['stock']:
+                i['quantity'] = product['stock']
+            else:
+                i['quantity'] += int(quantity)
             exists = True
             break
     if not exists:
