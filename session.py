@@ -10,6 +10,8 @@ import datetime
 import model
 import dbschema
 
+from bisect import bisect_left
+
 COOKIE_NAME = 'session'
 
 
@@ -64,8 +66,20 @@ def add_to_cart(db, itemid, quantity):
     if cart == None:
         cart = []
 
-    # Add new item to cart list
-    cart.append({'id': itemid, 'quantity': int(quantity), 'name': product['name'], 'cost': float(product['unit_cost']), 'image': product['image_url']})
+    # Create new item to add
+    item = {'id': itemid, 'quantity': int(quantity), 'name': product['name'], 'cost': float(product['unit_cost']), 'image': product['image_url']}
+
+    # Check if item exists
+    exists = False
+    for item in cart:
+        if item['id'] == itemid:
+            # Update existing item quantity
+            item['quantity'] += int(quantity)
+            exists = True
+            break
+    if not exists:
+        # Add new item to cart list
+        cart.append(item)    
 
     # Add new cart list to database for this session
     cur.execute("""UPDATE sessions SET data=? WHERE sessionid=?""", (json.dumps(cart), sessionid,))
