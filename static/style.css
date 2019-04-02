@@ -678,7 +678,7 @@ footer {
     .product-item .image {
         min-width: 50vw;
     }
-    .product-item h3 {
+    .product-item .name {
         max-width: 60vw;
     }
     /* Main > Product */
