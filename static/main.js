@@ -3,29 +3,12 @@
 		ID: 45423725
 ***/
 
-// Handle menu button click on mobile
-document.getElementsByClassName('menu-button')[0].onclick = function() {
-    if(window.innerWidth<800) {
-        let menu = document.getElementsByTagName('nav')[0];
-        menu.style.height = (menu.style.height != '270px') ? '270px' : 0;
-        menu.style.padding = (menu.style.padding != '20px') ? '20px' : '0 20px 0';
-    }
-};
+// Mobile menu navigation
+var menu = document.getElementsByTagName('nav')[0];
 
-// Handle menu hide for unfocus tap on mobile
-document.getElementsByTagName('main')[0].onclick = function() {
-    if(window.innerWidth<800) {
-        let menu = document.getElementsByTagName('nav')[0];
-        menu.style.height = 0;
-        menu.style.padding = '0 20px 0';
-    }
-};
-
-// Handle menu hide for resize on mobile
-window.onresize = function() {
-    // Enable back button if needed
-    let menu = document.getElementsByTagName('nav')[0];
-    if(window.innerWidth<800) {
+// Function to hide mobile menu
+function hideMenu() {
+    if(window.innerWidth < 800) {
         menu.style.height = 0;
         menu.style.padding = '0 20px 0';
     } else {
@@ -33,4 +16,20 @@ window.onresize = function() {
         menu.style.height = '';
         menu.style.padding = '';
     }
+};
+
+// Handle menu hide/reset for window resize
+window.onresize = function() { hideMenu() };
+
+if(window.innerWidth < 800) {
+    // Handle menu button click
+    document.getElementsByClassName('menu-button')[0].onclick = function() {
+        menu.style.height = (menu.style.height != '270px') ? '270px' : 0;
+        menu.style.padding = (menu.style.padding != '20px') ? '20px' : '0 20px 0';
+    };
+
+    // Handle mobile menu hide on scroll or page tap
+    document.getElementsByTagName('main')[0].onclick = function() { hideMenu() };
+    window.onscroll = function() { hideMenu() };
+    document.body.ontouchmove = function() { hideMenu() };
 }
