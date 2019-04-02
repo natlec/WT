@@ -371,6 +371,11 @@ main h2 {
     flex: 1;
     padding: 5px 5px 20px;
     margin: 0 0 20px;
+    transform: none;
+    transition: .2s ease;
+}
+.product-item:active {
+    transform: scale(.98);
 }
 .product-item .image {
     display: flex;
@@ -511,6 +516,11 @@ main h2 {
 .cart-item {
     display: flex;
     align-items: center;
+    transform: none;
+    transition: .2s ease;
+}
+.cart-item:active {
+    transform: scale(.98);
 }
 .cart-item .image {
     display: flex;
