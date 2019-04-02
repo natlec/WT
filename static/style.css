@@ -350,8 +350,6 @@ main h2 {
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    image-rendering: optimizeQuality;
-    image-rendering: -webkit-optimize-contrast;
 }
 .product-item {
     display: flex;
