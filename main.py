@@ -154,6 +154,12 @@ def static(filename):
     return static_file(filename=filename, root='static')
 
 
+# Favicon image
+@app.route('/favicon.ico')
+def favicon():
+    return static_file('favicon.ico', root='static', mimetype='image/x-icon')
+
+
 # Start Bottle on port 8010
 if __name__ == '__main__':
 
