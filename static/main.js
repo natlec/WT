@@ -6,21 +6,21 @@
 window.onload = function() {
     // Enable back button if needed
     if(document.referrer.indexOf('127.0.0.1:8010') > -1 && history.length > 0) {
-        document.getElementsByClassName('home')[0].classList.add('back');
+        document.getElementsByClassName('home-button')[0].classList.add('back-button');
     } else {
-        document.getElementsByClassName('home')[0].classList.remove('back');
+        document.getElementsByClassName('home-button')[0].classList.remove('back-button');
     }
 }
 
 // Handle back button click
-document.getElementsByClassName('home')[0].onclick = function() {
+document.getElementsByClassName('home-button')[0].onclick = function() {
     if(document.referrer.indexOf('127.0.0.1:8010') > -1 && history.length > 0) {
         window.history.back();
     }
 };
 
 // Handle menu button click on mobile
-document.getElementsByClassName('menu')[0].onclick = function() {
+document.getElementsByClassName('menu-button')[0].onclick = function() {
     if(window.innerWidth<800) {
         let menu = document.getElementsByTagName('nav')[0];
         menu.style.top = (menu.style.top != '80px') ? '80px' : '50px';
@@ -30,7 +30,7 @@ document.getElementsByClassName('menu')[0].onclick = function() {
 };
 
 // Handle menu hide for unfocus tap on mobile
-document.getElementsByTagName('main')[0].onclick = function() {
+document.getElementsByTagName('main-button')[0].onclick = function() {
     if(window.innerWidth<800) {
         let menu = document.getElementsByTagName('nav')[0];
         menu.style.top = '50px';

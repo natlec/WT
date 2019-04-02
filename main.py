@@ -15,6 +15,9 @@ def index(db):
     # Get or set session cookie
     session.get_or_create_session(db)
 
+    # Get cart contents from database
+    cart = session.get_cart_contents(db)
+
     # Info relative to page
     info = {
         'page': '',
@@ -22,6 +25,11 @@ def index(db):
         'description': 'Explore our entire range of products for both men & women. ',
         'cart': 0
     }
+
+    # Get cart items count
+    if cart:
+        for item in cart:
+            info['cart'] += int(item['quantity'])
 
     # Get products list
     info['products'] = model.product_list(db)
@@ -36,6 +44,9 @@ def products(db, category):
     # Get or set session cookie
     session.get_or_create_session(db)
 
+    # Get cart contents from database
+    cart = session.get_cart_contents(db)
+
     # Check if category exists
     if category == 'men' or category == 'women':
 
@@ -46,6 +57,11 @@ def products(db, category):
             'description': "Explore our entire range of %s's products." % category,
             'cart': 0
         }
+
+        # Get cart items count
+        if cart:
+            for item in cart:
+                info['cart'] += int(item['quantity'])
 
         # Get products list
         info['products'] = model.product_list(db, category)
@@ -62,12 +78,26 @@ def cart(db):
     # Get or set session cookie
     session.get_or_create_session(db)
 
+    # Get cart contents from database
+    cart = session.get_cart_contents(db)
+
     # Info relative to page
     info = {
         'page': 'cart',
         'title': 'Shopping cart',
-        'cart': 0
+        'description': "You've added the following items to your shopping cart:",
+        'cart': 0,
+        'total': 0
     }
+
+    # Get item list for cart
+    info['products'] = cart
+
+    # Get cart items count & total cost
+    if cart:
+        for item in cart:
+            info['cart'] += int(item['quantity'])
+            info['total'] += (float(item['cost'])*float(item['quantity']))
 
     return template('cart', info)
 
@@ -79,14 +109,12 @@ def addToCart(db):
     # Get or set session cookie
     session.get_or_create_session(db)
 
-    # Info relative to page
-    info = {
-        'page': 'cart',
-        'title': 'Shopping cart',
-        'cart': 0
-    }
-    
-    return template('cart', info)
+    # Add item to cart
+    session.add_to_cart(db, request.forms.get('product'), request.forms.get('quantity'))
+
+    # Redirect to cart page
+    response.status = 302
+    response.set_header('Location', '/cart')
 
 
 # Product page
@@ -96,11 +124,19 @@ def product(db, id):
     # Get or set session cookie
     session.get_or_create_session(db)
 
+    # Get cart contents from database
+    cart = session.get_cart_contents(db)
+
     # Info relative to page
     info = {
         'page': 'product',
         'cart': 0
     }
+
+    # Get cart items count
+    if cart:
+        for item in cart:
+            info['cart'] += int(item['quantity'])
 
     # Get product data
     info['product'] = model.product_get(db, id)

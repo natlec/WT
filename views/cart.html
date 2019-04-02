@@ -1,4 +1,31 @@
 % rebase('base.html')
 
 <h2>{{title}}</h2>
-<p>Your content goes here...</p>
+
+<!-- Products list -->
+% if products:
+<p>{{description}}</p>
+<hr>
+<div class="cart">
+    % for product in products:
+    <!-- Product {{product['id']}} -->
+    <a class="cart-item" href="/product/{{product['id']}}">
+        <div class="image">
+            <img src="{{product['image']}}" alt="{{product['name']}}">
+        </div>
+        <div class="info">
+            <h3 class="name">{{product['name']}}</h3>
+            <h4 class="cost">${{product['cost']}}</h4>
+            <h5 class="quantity">Quantity: {{product['quantity']}}</h5>
+        </div>
+    </a>
+    % end
+</div>
+<hr>
+<div class="cart-total">
+    <h6>Total: </h6>
+    <p>${{round(total, 2)}}</p>
+</div>
+% else:
+<p>Your cart is empty, choose some products from <a href="/">our collection</a>!</p>
+% end

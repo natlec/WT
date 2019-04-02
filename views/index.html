@@ -11,13 +11,13 @@
             <div class="image">
                 <img src="{{product['image_url']}}" alt="{{product['name']}}">
             </div>
-            <h3>{{product['name']}}</h3>
+            <h3 class="name">{{product['name']}}</h3>
             <div class="info">
-                <h4>${{product['unit_cost']}}</h4>
+                <h4 class="cost">${{product['unit_cost']}}</h4>
                 % if product['inventory'] > 0:
-                <h5>{{product['inventory']}} in stock</h5>
+                <h5 class="stock">{{product['inventory']}} in stock</h5>
                 % else:
-                <h5 class="nostock">Out of stock</h5>
+                <h5 class="stock nostock">Out of stock</h5>
                 % end
             </div>
         </a>
