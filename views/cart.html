@@ -9,7 +9,7 @@
 <div class="cart">
     % for product in products:
     <!-- Product {{product['id']}} -->
-    <a class="cart-item" href="/product/{{product['id']}}">
+    <a class="cart-item" href="/product/{{product['id']}}" title="{{product['name']}} (${{product['cost']}})">
         <div class="image">
             <img src="{{product['image']}}" alt="{{product['name']}}">
         </div>

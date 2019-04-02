@@ -7,7 +7,7 @@
     <div class="products">
         % for product in products:
         <!-- Product {{product['id']}} -->
-        <a class="product-item" href="/product/{{product['id']}}">
+        <a class="product-item" href="/product/{{product['id']}}" title="{{product['name']}} (${{product['unit_cost']}})">
             <div class="image">
                 <img src="{{product['image_url']}}" alt="{{product['name']}}">
             </div>
