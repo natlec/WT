@@ -59,8 +59,6 @@ body {
     text-rendering: optimizeLegibility;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-	image-rendering: optimizeQuality;
-    image-rendering: -webkit-optimize-contrast;
 }
 
 /* Global > Headings */
@@ -259,10 +257,11 @@ header .active-button::after {
     content: '';
     display: block;
     position: absolute;
-    height: 2px;
+    height: 3px;
     width: 100%;
     left: 0;
     top: -10px;
+    margin: 0 0 -3px;
     background: rgba(100, 50, 255, .7); /* IE */
     background: rgba(var(--acc2), var(--opac));
 }
@@ -330,7 +329,7 @@ header .active-button::after {
 }
 .cart-button .icon span {
     position: absolute;
-    margin: -4px 0 0;
+    margin: -2px 0 0;
     font: 600 .7em 'Ilisarniq', sans-serif;
     color: rgb(10, 5, 25); /* IE */
     color: rgb(var(--acc1));
@@ -351,6 +350,8 @@ main h2 {
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
+    image-rendering: optimizeQuality;
+    image-rendering: -webkit-optimize-contrast;
 }
 .product-item {
     display: flex;
@@ -418,6 +419,8 @@ main h2 {
 .product {
     display: flex;
     flex-flow: row wrap;
+    image-rendering: optimizeQuality;
+    image-rendering: -webkit-optimize-contrast;
 }
 .product .image {
     display: flex;
@@ -671,9 +674,10 @@ footer {
         display: block;
         position: absolute;
         height: 100%;
-        width: 2px;
+        width: 3px;
         left: -20px;
         top: 0;
+        margin: 0 -3px 0 0;
         background: rgba(100, 50, 255, .7); /* IE */
         background: rgba(var(--acc2), var(--opac));
     }
