@@ -71,10 +71,10 @@ def add_to_cart(db, itemid, quantity):
 
     # Check if item exists
     exists = False
-    for item in cart:
-        if item['id'] == itemid:
+    for i in cart:
+        if i['id'] == itemid:
             # Update existing item quantity
-            item['quantity'] += int(quantity)
+            i['quantity'] += int(quantity)
             exists = True
             break
     if not exists:
