@@ -24,7 +24,7 @@ document.getElementsByClassName('menu-button')[0].onclick = function() {
     if(window.innerWidth<800) {
         let menu = document.getElementsByTagName('nav')[0];
         menu.style.height = (menu.style.height != '270px') ? '270px' : 0;
-        menu.style.padding = (menu.style.padding != '10px 20px 20px') ? '10px 20px 20px' : '0 20px 0';
+        menu.style.padding = (menu.style.padding != '20px') ? '20px' : '0 20px 0';
     }
 };
 
@@ -45,6 +45,7 @@ window.onresize = function() {
         menu.style.height = 0;
         menu.style.padding = '0 20px 0';
     } else {
+        menu.style.transform = '';
         menu.style.height = '';
         menu.style.padding = '';
     }

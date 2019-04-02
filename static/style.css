@@ -208,6 +208,11 @@ header {
     box-shadow: 0 2px 5px rgba(10, 5, 25, .2); /* IE */
     box-shadow: 0 2px 5px rgba(var(--acc1), .2);
     z-index: 99;
+    -webkit-user-drag: none;
+	user-select: none;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
 }
 
 /* Header > Menu */
@@ -663,7 +668,7 @@ footer {
         flex-direction: column;
         align-items: flex-end;
         padding: 0 20px 0;
-        top: 80px;
+        top: 70px;
         left: 0;
         right: 20px;
         background: rgb(10, 5, 25); /* IE */
