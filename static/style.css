@@ -675,6 +675,9 @@ footer {
         margin-top: 110px;
     }
     /* Main > Products */
+    .product-item:active {
+        transform: scale(.95);
+    }
     .product-item .image {
         min-width: 50vw;
     }
@@ -690,6 +693,9 @@ footer {
         margin: 20px 0 0 0;
     }
     /* Main > Cart */
+    .cart-item:active {
+        transform: scale(.95);
+    }
     .cart-item .name,
     .cart-item .cost {
         font-size: 1em;
