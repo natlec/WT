@@ -113,8 +113,7 @@ def addToCart(db):
     session.add_to_cart(db, request.forms.get('product'), request.forms.get('quantity'))
 
     # Redirect to cart page
-    response.status = 302
-    response.set_header('Location', '/cart')
+    return redirect('cart')
 
 
 # Product page
