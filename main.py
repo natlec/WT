@@ -116,6 +116,20 @@ def addToCart(db):
     return redirect('cart')
 
 
+# Empty cart request
+@app.post('/empty_cart')
+def emptyCart(db):
+
+    # Get or set session cookie
+    session.get_or_create_session(db)
+
+    # Add item to cart
+    session.empty_cart(db)
+
+    # Redirect to cart page
+    return redirect('cart')
+
+
 # Product page
 @app.route('/product/<id>')
 def product(db, id):

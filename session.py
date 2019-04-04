@@ -50,6 +50,21 @@ def get_or_create_session(db):
     return sessionid
 
 
+def empty_cart(db):
+    """Empty the cart by deleting the current session"""
+
+    cur = db.cursor()
+
+    # Get sessionid from cookie
+    sessionid = request.get_cookie(COOKIE_NAME)
+    cur.execute("""SELECT sessionid FROM sessions WHERE sessionid=?""", (sessionid,))
+
+    # If session exists: delete it from the database
+    if cur.fetchone():
+        cur.execute("""DELETE FROM sessions WHERE sessionid=?""", (sessionid,))
+        db.commit()
+
+
 def add_to_cart(db, itemid, quantity):
     """Add an item to the shopping cart"""
 

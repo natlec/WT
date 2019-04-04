@@ -22,9 +22,14 @@
     % end
 </div>
 <hr>
-<div class="cart-total">
-    <h6>Total: </h6>
-    <p>${{round(total, 2)}}</p>
+<div class="cart-info">
+    <div class="cart-total">
+        <h6>Total: </h6>
+        <p>${{round(total, 2)}}</p>
+    </div>
+    <form class="cart-empty" action="/empty_cart" method="POST">
+        <input class="button" type="submit" value="Empty cart">
+    </form>
 </div>
 % else:
 <p>Your cart is empty, choose some products from <a href="/">our collection</a>!</p>

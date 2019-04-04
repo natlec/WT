@@ -561,20 +561,27 @@ main h2 {
     color: rgba(var(--acc1), var(--opac));
 }
 
+.cart-info {
+    display: flex;
+    align-items: center;
+    margin: 0 0 0 20px;
+}
 .cart-total {
     display: flex;
     flex-direction: column;
-    margin: 0 0 0 20px;
 }
-.cart-total h6 {
+.cart-info h6 {
     margin: 0;
     font-size: 1em;
 }
-.cart-total p {
+.cart-info p {
     margin: 5px 0 10px;
     font: 600 1.5em 'Ilisarniq', sans-serif;
     color: rgb(10, 5, 25); /* IE */
     color: rgb(var(--acc1));
+}
+.cart-empty {
+    margin: 0 0 0 auto;
 }
 
 
