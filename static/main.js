@@ -4,7 +4,7 @@
 ***/
 
 // Mobile menu navigation
-var menu = document.getElementsByTagName('nav')[0];
+var menu = document.querySelector('nav');
 
 // Function to hide mobile menu
 function hideMenu() {
@@ -23,13 +23,13 @@ window.onresize = function() { hideMenu() };
 
 if(window.innerWidth < 800) {
     // Handle menu button click
-    document.getElementsByClassName('menu-button')[0].onclick = function() {
+    document.querySelector('.menu-button').onclick = function() {
         menu.style.height = (menu.style.height != '270px') ? '270px' : 0;
         menu.style.padding = (menu.style.padding != '20px') ? '20px' : '0 20px 0';
     };
 
     // Handle mobile menu hide on scroll or page tap
-    document.getElementsByTagName('main')[0].onclick = function() { hideMenu() };
+    document.querySelector('main').onclick = function() { hideMenu() };
     window.onscroll = function() { hideMenu() };
     document.body.ontouchmove = function() { hideMenu() };
 }
