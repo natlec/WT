@@ -78,7 +78,7 @@ def add_to_cart(db, itemid, quantity):
 
     # Get cart list
     cart = get_cart_contents(db)
-    if cart == None:
+    if cart is None:
         cart = []
 
     # Create new item to add

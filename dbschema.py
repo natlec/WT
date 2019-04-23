@@ -58,7 +58,6 @@ def sample_data(db):
     Returns the list of users and the list of positions
     that are inserted into the database"""
 
-
     cursor = db.cursor()
     cursor.execute("DELETE FROM products")
 
@@ -66,7 +65,7 @@ def sample_data(db):
     products = {}
     id = 0
     first = True  # flag
-    sql = "INSERT INTO products (id, name, description, image_url, category, inventory, unit_cost) VALUES (?, ?, ?, ?, ?, ?, ?)"
+    sql = "INSERT INTO products (id,name,description,image_url,category,inventory,unit_cost) VALUES (?,?,?,?,?,?,?)"
     with open(os.path.join(os.path.dirname(__file__), 'apparel.csv')) as fd:
         reader = csv.DictReader(fd)
         for row in reader:

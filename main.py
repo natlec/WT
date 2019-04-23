@@ -155,7 +155,7 @@ def product(db, id):
     info['product'] = model.product_get(db, id)
 
     # Check if product exists
-    if info['product'] != None:
+    if info['product'] is not None:
         return template('product', info)
     else:
         return HTTPResponse(status=404)
