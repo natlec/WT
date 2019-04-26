@@ -112,11 +112,8 @@ def get_cart_contents(db):
 
     cur = db.cursor()
     
-    # Get sessionid from cookie
-    sessionid = request.get_cookie(COOKIE_NAME)
-
     # Get cart items from sessions table in database (only for this session)
-    cur.execute("""SELECT data FROM sessions WHERE sessionid=? AND data<>''""", (sessionid,))
+    cur.execute("""SELECT data FROM sessions WHERE sessionid=? AND data<>''""", (request.get_cookie(COOKIE_NAME),))
     row = cur.fetchone()
 
     # Return cart items
